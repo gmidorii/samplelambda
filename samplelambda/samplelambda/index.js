@@ -18,7 +18,7 @@ const dynamo = new doc.DynamoDB();
  * DynamoDB API as a JSON body.
  */
 exports.handler = (event, context, callback) => {
-    //console.log('Received event:', JSON.stringify(event, null, 2));
+    console.log('Received event:', JSON.stringify(event, null, 2));
 
     const done = (err, res) => callback(null, {
         statusCode: err ? '400' : '200',
@@ -28,20 +28,20 @@ exports.handler = (event, context, callback) => {
         },
     });
 
-    switch (event.httpMethod) {
-        case 'DELETE':
-            dynamo.deleteItem(JSON.parse(event.body), done);
-            break;
-        case 'GET':
-            dynamo.scan({ TableName: event.queryStringParameters.TableName }, done);
-            break;
-        case 'POST':
-            dynamo.putItem(JSON.parse(event.body), done);
-            break;
-        case 'PUT':
-            dynamo.updateItem(JSON.parse(event.body), done);
-            break;
-        default:
-            done(new Error(`Unsupported method "${event.httpMethod}"`));
-    }
+    //switch (event.httpMethod) {
+    //    case 'DELETE':
+    //        dynamo.deleteItem(JSON.parse(event.body), done);
+    //        break;
+    //    case 'GET':
+    //        dynamo.scan({ TableName: event.queryStringParameters.TableName }, done);
+    //        break;
+    //    case 'POST':
+    //        dynamo.putItem(JSON.parse(event.body), done);
+    //        break;
+    //    case 'PUT':
+    //        dynamo.updateItem(JSON.parse(event.body), done);
+    //        break;
+    //    default:
+    //        done(new Error(`Unsupported method "${event.httpMethod}"`));
+    //}
 };
