@@ -5,7 +5,7 @@ import {DynamoDB} from 'aws-sdk'
 
 const dynamoDb = new DynamoDB.DocumentClient()
 
-export function hello(event: any, context: any, callback: Function) {
+export function hello(event: Sample, context: any, callback: Function) {
   console.log(event)
 
   const timestamp = new Date().getTime()
@@ -14,7 +14,7 @@ export function hello(event: any, context: any, callback: Function) {
     TableName: 'sample',
     Item: {
       id: uuid.v1(),
-      text: 'text',
+      text: event.text,
       createdAt: timestamp
     }
   }
@@ -31,4 +31,8 @@ export function hello(event: any, context: any, callback: Function) {
     }
     callback(null, response)
   })
+}
+
+declare class Sample {
+  text: string
 }
