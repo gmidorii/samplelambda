@@ -1,4 +1,8 @@
 {
   "title": "hello",
-  "text": "event.json"
+  "text": "event.json",
+  "hoge": {
+    "id": "hoge-id",
+    "code": 10
+  }
 }

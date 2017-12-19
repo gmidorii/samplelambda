@@ -2,6 +2,7 @@
 
 import * as uuid from 'uuid'
 import {DynamoDB} from 'aws-sdk'
+import { int } from 'aws-sdk/clients/datapipeline';
 
 const dynamoDb = new DynamoDB.DocumentClient()
 
@@ -33,6 +34,8 @@ export function hello(event: Sample, context: any, callback: Function) {
       id: uuid.v1(),
       title: event.title,
       text: event.text,
+      hoge_id: event.hoge.id,
+      hoge_code: event.hoge.code,
       createdAt: timestamp
     }
   }
@@ -54,4 +57,10 @@ export function hello(event: Sample, context: any, callback: Function) {
 declare class Sample {
   title: string
   text: string
+  hoge: Hoge
+}
+
+declare class Hoge {
+  id: string
+  code: number
 }
