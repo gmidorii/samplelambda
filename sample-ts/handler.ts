@@ -12,6 +12,7 @@ export function hello(event: Sample, context: any, callback: Function) {
   const timestamp = new Date().getTime()
   console.log(timestamp)
 
+  // Get
   const gParam = {
     TableName: 'sample',
     Key: {
@@ -27,7 +28,33 @@ export function hello(event: Sample, context: any, callback: Function) {
     }
     console.log(result)
   })
-
+  
+  var upParam = {
+    TableName: 'sample',
+    Key : {
+      id : 'd4b46f90-e70f-11e7-8dd8-c5e92e1cb649'
+    },
+    ExpressionAttributeNames : {
+      '#T': 'text',
+      '#H': 'hoge_id',
+    },
+    ExpressionAttributeValues: {
+      ":newText": 'no event.json',
+      ":newHogeId": 'hogehoge'
+    },
+    UpdateExpression: 'SET #T = :newText, #H = :newHogeId'
+  }
+  dynamoDb.update(upParam, (error, result) => {
+    if (error) {
+      console.log(error)
+      return
+    }
+    const response = {
+      statusCode: 200
+    }
+    callback(null,response)
+  })
+  // Post
   const param = {
     TableName: 'sample',
     Item: {
