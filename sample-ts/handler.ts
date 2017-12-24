@@ -19,9 +19,10 @@ declare class Hoge {
 
 export function hello(event: Sample, context: any, callback: Function) {
   console.log(event)
-  dynamoDBGet(callback)
-  dynamoDBPut(event, callback)
-  dynamoDBUpdate(callback)
+  //dynamoDBGet(callback)
+  //dynamoDBPut(event, callback)
+  //dynamoDBUpdate(callback)
+  dynamoDBDelete(callback)
 }
 
 function dynamoDBGet(callback: Function) {
@@ -107,4 +108,27 @@ function dynamoDBPut(event:Sample, callback:Function) {
     callback(null, response)
   })
   
+}
+
+function dynamoDBDelete(callback: Function) {
+  var param = {
+    TableName: 'sample',
+    Key: {
+      id : '76798d60-e710-11e7-9992-955e1a30142a'
+    }
+  }
+
+  dynamoDb.delete(param, (error, result) => {
+    if(error) {
+      console.log(error)
+      callback(new Error("dynamodb delete error"))
+      return
+    }
+
+    console.log(result)
+    const response = {
+      statusCode: 200
+    }
+    callback(null, response)
+  })
 }
