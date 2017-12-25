@@ -22,7 +22,8 @@ export function hello(event: Sample, context: any, callback: Function) {
   //dynamoDBGet(callback)
   //dynamoDBPut(event, callback)
   //dynamoDBUpdate(callback)
-  dynamoDBDelete(callback)
+  //dynamoDBDelete(callback)
+  dynamoDBScan(callback)
 }
 
 function dynamoDBGet(callback: Function) {
@@ -123,6 +124,26 @@ function dynamoDBDelete(callback: Function) {
       console.log(error)
       callback(new Error("dynamodb delete error"))
       return
+    }
+
+    console.log(result)
+    const response = {
+      statusCode: 200
+    }
+    callback(null, response)
+  })
+}
+
+function dynamoDBScan(callback:Function) {
+  var param = {
+    TableName: 'sample',
+    FilterExpression: 'text = :text',
+    ExpressionAttributeValues: {':text': 'text'}
+  }
+
+  dynamoDb.scan(param, (error, result) => {
+    if (error) {
+      console.log(error)
     }
 
     console.log(result)
