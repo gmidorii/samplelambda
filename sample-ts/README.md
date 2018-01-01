@@ -7,3 +7,7 @@ sample lambda for TypeScript.
 - DynamoDB
 	- get
 	- put
+	- delete
+	- update
+	- post
+
