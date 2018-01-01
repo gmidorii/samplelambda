@@ -1,0 +1,121 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server for API GW + Lambda",
+    "version": "1.0.0",
+    "title": "Swagger + API GW + Lambda",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "todo",
+      "description": "Todo CRUD"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/todo": {
+      "post": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Post todo",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Update todo",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update todo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status OK"
+          },
+          "400": {
+            "description": "Invalid Resource"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/todo/{todoId}": {
+      "get": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Get todo",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "description": "todo id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Todo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "updatedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
