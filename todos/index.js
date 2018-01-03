@@ -6,27 +6,27 @@ exports.handler = function(event, context, callback) {
 
   switch (method) {
     case 'GET':
-      getTodo();
+      console.log(event)
+      getTodo(event, callback);
       break;
     case 'POST':
-      postTodo();
+      postTodo(event, callback);
       break;
     case 'PUT':
-      updateTodo();
+      updateTodo(event, callback);
       break;
   }
 };
 
 function getTodo(event, callback) {
+  console.log(event)
   var param = {
     TableName: "todo",
     Key: {
-      "id" : {
-        S: event.id
-      }
+      "id" : event.id
     }
   };
-  dynamo.getItem(param, callback);
+  dynamo.get(param, callback);
 }
 
 function postTodo(event, callback) {
