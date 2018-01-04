@@ -30,7 +30,28 @@ function getTodo(event, callback) {
 }
 
 function postTodo(event, callback) {
+  const now = moment().format()
+  var param = {
+    TableName: 'todo',
+    Item: {
+      "id" : event.id,
+      "updated_at" : now
+    }
+  }
 
+  dynamo.put(param, (err, result) => {
+    if (err) {
+      console.log(err)
+      callback(new Error("dynamo db put error"))
+      return
+    }
+
+    console.log(result)
+    const res = {
+      statusCode: 200
+    }
+    callback(null, res)
+  })
 }
 
 function updateTodo(event, callback) {
