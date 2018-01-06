@@ -56,5 +56,28 @@ function postTodo(event, callback) {
 }
 
 function updateTodo(event, callback) {
+  const now = moment().format()
+  var param = {
+    TableName: 'todo',
+    Key: {
+      "id" : "hogehoge"
+    },
+    UpdateExpression: "set #a = :x",
+    ExpressionAttributeNames: {
+      "#a": "updated_at"
+    },
+    ExpressionAttributeValues: {
+      ":x": now
+    }
+  }
 
+  dynamo.update(param, (err, result) => {
+    if (err) {
+      console.log(err)
+      callback(new Error("Update error"))
+    }
+
+    console.log(result)
+    callback(null, result)
+  })
 }
