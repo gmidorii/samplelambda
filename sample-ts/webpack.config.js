@@ -1,5 +1,7 @@
 var path = require('path');
 
+const webpack = require('webpack');
+
 module.exports = {
   entry: './handler.ts',
   target: 'node',
@@ -21,5 +23,14 @@ module.exports = {
   },
   externals: {
     'aws-sdk': true
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'ENV': JSON.stringify(process.env.ENV),
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'DYNAMO_ENV': JSON.stringify(process.env.DYNAMO_ENV)
+      }
+    })
+  ]
 }

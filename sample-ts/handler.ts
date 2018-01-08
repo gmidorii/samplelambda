@@ -4,7 +4,8 @@ import * as uuid from 'uuid'
 import {DynamoDB} from 'aws-sdk'
 import { int } from 'aws-sdk/clients/datapipeline';
 
-const dynamoDb = new DynamoDB.DocumentClient()
+console.log(process.env.DYNAMO_ENV)
+const dynamoDb = new DynamoDB.DocumentClient({endpoint: process.env.DYNAMO_ENV})
 
 declare class Sample {
   title: string
