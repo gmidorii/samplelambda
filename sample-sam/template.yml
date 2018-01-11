@@ -11,7 +11,7 @@ Resources:
       Policies: AmazonDynamoDBFullAccess
       Environment:
         Variables:
-          TABLE_NAME: !Ref VotesTable
+          TABLE_NAME: !Ref Vote
       Events:
         Vote:
           Type: Api
