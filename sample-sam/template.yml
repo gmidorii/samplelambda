@@ -17,4 +17,4 @@ Resources:
           Type: Api
           Properties:
             Path: /vote
-            Method: get
+            Method: post
