@@ -4,7 +4,7 @@
 
 ### local sam
 ```sh
-
+sam invoke VoteSpacesTabs --event event.json
 ```
 
 ### docker
