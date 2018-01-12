@@ -1,9 +1,8 @@
 
 var AWS = require('aws-sdk')
-var dynamo = new AWS.DynamoDB.DocumentClient({
-  region: 'localhost',
-  endpoint: 'http://localhost:7777'
-})
+AWS.config.endpoint = new AWS.Endpoint('http://localhost:7777');
+
+var dynamo = new AWS.DynamoDB.DocumentClient()
 
 exports.handler = (event, context, callback) => {
   console.log(event)
