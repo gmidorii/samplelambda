@@ -4,9 +4,8 @@
 
 ### local sam
 ```sh
-TABLE_NAME=Vote \
-LOCALURL=http://[privateIP]:7777 \
-sam local invoke "VotePost" --event event.json
+# must created env.json
+sam local invoke "VotePost" --event event.json --env-vars env.json
 ```
 
 ### docker
@@ -30,4 +29,13 @@ aws dynamodb create-table \
 
 # describe
 aws dynamodb describe-table --table-name Vote --endpoint-url http://localhost:7777
+
+# scan
+aws dynamodb --endpoint-url http://localhost:7777 scan --table-name Vote
+```
+
+### API GW
+```sh
+# curl
+curl -H "Content-Type:application/json" -d '{ "id": "hogehoges" }' http://127.0.0.1:3000/vote
 ```
