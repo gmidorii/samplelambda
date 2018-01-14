@@ -1,12 +1,16 @@
 
 var AWS = require('aws-sdk')
-AWS.config.endpoint = new AWS.Endpoint('http://localhost:7777');
+AWS.config.update({
+  region: 'us-west-2',
+  endpoint: process.env.LOCALURL
+})
 
 var dynamo = new AWS.DynamoDB.DocumentClient()
 
 exports.handler = (event, context, callback) => {
   console.log(event)
   console.log(process.env.TABLE_NAME)
+  console.log(process.env.LOCALURL)
 
   var param = {
     TableName: process.env.TABLE_NAME,

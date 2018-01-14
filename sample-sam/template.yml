@@ -1,17 +1,16 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  VotesTable:
-    Type: "AWS::Serverless::SimpleTable"
-  VoteSpacesTabs:
+  VotePost:
     Type: "AWS::Serverless::Function"
     Properties:
       Runtime: nodejs6.10
-      Handler: vote.handler
+      Handler: post-vote.handler
       Policies: AmazonDynamoDBFullAccess
       Environment:
         Variables:
-          TABLE_NAME: !Ref Vote
+          TABLE_NAME: $TABLE_NAME
+          LOCALURL: $LOCALURL
       Events:
         Vote:
           Type: Api

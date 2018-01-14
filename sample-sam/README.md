@@ -4,12 +4,14 @@
 
 ### local sam
 ```sh
-sam invoke VoteSpacesTabs --event event.json
+TABLE_NAME=Vote \
+LOCALURL=http://[privateIP]:7777 \
+sam local invoke "VotePost" --event event.json
 ```
 
 ### docker
 ```sh
-docker run -it -d -p 7777:7777 tray/dynamodb-local -inMemory -port 7777
+docker run -it -d -p 7777:7777 tray/dynamodb-local -inMemory -port 7777 -sharedDb
 ```
 
 ### aws cli
