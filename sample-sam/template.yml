@@ -17,3 +17,19 @@ Resources:
           Properties:
             Path: /vote
             Method: post
+  VoteGet:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Runtime: nodejs6.10
+      Handler: get-vote.handler
+      Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          TABLE_NAME: $TABLE_NAME
+          LOCALURL: $LOCALURL
+      Events:
+        Vote:
+          Type: Api
+          Properties:
+            Path: /vote
+            Method: get

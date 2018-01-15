@@ -6,6 +6,8 @@
 ```sh
 # must created env.json
 sam local invoke "VotePost" --event event.json --env-vars env.json
+
+sam local invoke VoteGet -e event-get.json -n env.json
 ```
 
 ### docker
