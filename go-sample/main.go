@@ -8,12 +8,11 @@ import (
 )
 
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	log.Println("Test")
 	log.Println(request)
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body:       "Hello aws lambda go",
+		Body:       "Hello " + request.Body,
 	}, nil
 }
 
