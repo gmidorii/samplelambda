@@ -1,9 +1,11 @@
 
 var AWS = require('aws-sdk')
-AWS.config.update({
-  region: 'us-west-2',
-  endpoint: process.env.LOCALURL
-})
+if (process.env.AWS_SAM_LOCAL) {
+  AWS.config.update({
+    region: 'us-west-2',
+    endpoint: process.env.LOCALURL
+  })
+}
 
 var dynamo = new AWS.DynamoDB.DocumentClient()
 
