@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"sync"
+	"time"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -18,6 +20,17 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	var body Body
 	json.Unmarshal([]byte(request.Body), &body)
 	log.Println(body)
+
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func(wg *sync.WaitGroup) {
+		defer wg.Done()
+		time.Sleep(300 * time.Millisecond)
+		log.Println("go routine test")
+	}(&wg)
+
+	log.Println("hogehoge")
+	wg.Wait()
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
