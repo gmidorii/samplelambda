@@ -3,7 +3,7 @@ var path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './handler.ts',
+  entry: './src/handler.ts',
   target: 'node',
   module: {
     loaders: [
