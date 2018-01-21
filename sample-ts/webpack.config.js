@@ -3,7 +3,7 @@ var path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/handler.ts',
+  entry: './src/handler',
   target: 'node',
   module: {
     loaders: [
@@ -19,7 +19,7 @@ module.exports = {
   output: {
     libraryTarget: 'commonjs',
     path: path.join(__dirname, '.webpack'),
-    filename: 'handler.js'
+    filename: '[name].js'
   },
   externals: {
     'aws-sdk': true

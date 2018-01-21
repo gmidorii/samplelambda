@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  SampleLambda:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      Runtime: nodejs6.10
+      CodeUri: .webpack
+      Handler: main.hello
+      Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          DYNAMO_ENV: $DYNAMO_ENV
+      Events:
+        Post:
+          Type: Api
+          Properties:
+            Path: /sample
+            Method: post
