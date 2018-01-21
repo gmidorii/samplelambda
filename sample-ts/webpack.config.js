@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.d.ts', '.js']
   },
   output: {
     libraryTarget: 'commonjs',

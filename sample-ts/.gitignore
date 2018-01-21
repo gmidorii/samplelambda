@@ -4,5 +4,4 @@ jspm_packages
 built
 
 # Serverless directories
-.serverless
 .webpack

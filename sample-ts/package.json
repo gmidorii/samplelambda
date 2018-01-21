@@ -5,13 +5,22 @@
   "main": "webpack.config.js",
   "dependencies": {
     "aws-sdk": "^2.171.0",
+    "prettier": "^1.10.2",
+    "prettier-tslint": "^0.3.0",
     "serverless-webpack": "^4.1.0",
     "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
-    "uuid": "^3.1.0",
+    "uuid": "^3.2.1",
     "webpack": "^3.10.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^9.3.0",
+    "@types/uuid": "^3.4.3",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.4.2",
+    "tslint-config-prettier": "^1.6.0",
+    "tsutils": "^2.19.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
