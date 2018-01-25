@@ -5,7 +5,7 @@ Resources:
   HelloFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: go-sample
+      Handler: gosample
       Runtime: go1.x
       Events:
         GetEvent:

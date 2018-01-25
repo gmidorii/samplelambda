@@ -4,8 +4,11 @@ S3BUCKET=midori-lambda-code
 S3KEY=go/$(ZIPFILE)
 FUNCTIONNAME=goSampleLambda
 
-zip: 
+build: 
 	GOOS=linux GOARCH=amd64 go build -o $(BUILDFILE)
+
+zip: 
+	make build
 	zip $(ZIPFILE) $(BUILDFILE)
 
 upload: 
@@ -18,3 +21,7 @@ deploy:
 		--function-name $(FUNCTIONNAME) \
 		--s3-bucket $(S3BUCKET) \
 		--s3-key $(S3KEY)
+
+local-invoke:
+	make build
+	sam local invoke ${function} -e event/${function}/event.json
