@@ -11,12 +11,13 @@ import (
 )
 
 type Body struct {
-	Word string
-	Code string
+	Word string `json:"word"`
+	Code string `json:"code"`
 }
 
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	log.Println(request)
+
 	var body Body
 	json.Unmarshal([]byte(request.Body), &body)
 	log.Println(body)
