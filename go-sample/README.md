@@ -4,4 +4,4 @@
 Go implement for AWS Lambda.
 
 ## Note
-- aws-sam-local still don't support.
+- aws-sam-local supported.
