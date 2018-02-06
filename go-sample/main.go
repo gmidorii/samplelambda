@@ -22,6 +22,7 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	json.Unmarshal([]byte(request.Body), &body)
 	log.Println(body)
 	log.Println("add sample")
+	log.Println("sam test")
 
 	var wg sync.WaitGroup
 	wg.Add(1)

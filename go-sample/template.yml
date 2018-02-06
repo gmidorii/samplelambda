@@ -7,9 +7,11 @@ Resources:
     Properties:
       Handler: gosample
       Runtime: go1.x
+      CodeUri: zip/HelloFunction/gosample.zip
+      Tracing: Active
       Events:
         GetEvent:
           Type: Api
           Properties:
-            Path: /
+            Path: /hello
             Method: post
