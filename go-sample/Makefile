@@ -50,3 +50,11 @@ sam-update:
 		--template-file template.deploy \
 		--stack-name sam-sample-go \
 		--capabilities CAPABILITY_IAM
+
+sample:
+	$(eval FILES := $(shell ls -1 functions/**/*.go))
+	@for f in $(FILES) ; do \
+		echo $$f; \
+		go build -o $(BUILD_DIR)/$(BUILDFILE); \
+	done
+
