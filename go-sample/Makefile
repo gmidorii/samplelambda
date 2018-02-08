@@ -33,12 +33,14 @@ sam-zip:
 	GOOS=linux GOARCH=amd64 go build -o $(BUILD_DIR)/$(BUILDFILE)
 	zip $(ZIP_DIR)/$(ZIPFILE) $(BUILD_DIR)/*
 
+# package: upload s3 to lambda zip code
 sam-package:
 	aws cloudformation package \
 		--template-file template.yml \
 		--output-template-file template.deploy \
 		--s3-bucket $(PACKAGE_BUCKET)
 
+# deploy: create stack
 sam-deploy:
 	aws cloudformation deploy \
 		--template-file template.deploy \
