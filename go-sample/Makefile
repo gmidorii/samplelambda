@@ -55,8 +55,10 @@ sam-update:
 
 sample:
 	$(eval FILES := $(shell ls -1 functions/**/*.go))
+	$(eval PWD := $(shell pwd))
 	@for f in $(FILES) ; do \
-		echo $$f; \
+		echo $$f \
+		echo $(PWD) \
 		go build -o $(BUILD_DIR)/$(BUILDFILE); \
 	done
 
