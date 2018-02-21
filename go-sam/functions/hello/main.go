@@ -9,9 +9,7 @@ import (
 
 func HelloHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	log.Println(request)
-	return events.APIGatewayProxyResponse{
-		
-	}, nil
+	return events.APIGatewayProxyResponse{}, nil
 }
 
 func main() {
