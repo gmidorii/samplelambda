@@ -25,7 +25,7 @@ func HelloHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxy
 	if err != nil {
 		return events.APIGatewayProxyResponse{
 			StatusCode: http.StatusInternalServerError,
-		}, errors.New("json marshal error")
+		}, errors.New("json marshal error!!")
 	}
 	return events.APIGatewayProxyResponse{
 		StatusCode: http.StatusOK,

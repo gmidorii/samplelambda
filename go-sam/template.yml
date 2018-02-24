@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: hello
       Runtime: go1.x
-      CodeUri: build/functions/hello
+      CodeUri: build/hello
       Tracing: Active
       Events:
         GetEvent:
